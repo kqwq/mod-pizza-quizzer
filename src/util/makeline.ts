@@ -8,13 +8,13 @@ enum Crust {
   gf, // frozen, mod size only
   cauli, // frozen, mod size only
 }
-enum Greens {
+export enum Greens {
   arugula = "arugula",
   romaine = "romaine",
   mixed_greens = "mixed greens",
   spinach = "spinach",
 }
-enum Sauce {
+export enum Sauce {
   bbq = "bbq sauce",
   garlic_rub = "garlic rub",
   olive_oil = "olive oil",
@@ -23,7 +23,7 @@ enum Sauce {
   spicy_red = "spicy red sauce",
   white = "white sauce",
 }
-enum Cheese {
+export enum Cheese {
   asiago = "asiago",
   dairy_free = "dairy free cheese",
   feta = "feta",
@@ -32,7 +32,7 @@ enum Cheese {
   parmesan = "parmesan",
   cheddar = "cheddar",
 }
-enum Meat {
+export enum Meat {
   anchovies = "anchovies",
   bacon = "bacon",
   canadian_bacon = "canadian bacon",
@@ -44,7 +44,7 @@ enum Meat {
   salami = "salami",
   spicy_chicken_sausage = "spicy chicken sausage",
 }
-enum Topping {
+export enum Topping {
   artichokes = "artichokes",
   basil = "basil",
   black_olives = "black olives",
@@ -70,7 +70,7 @@ enum Topping {
   salt = "salt",
   salt_and_pepper = "salt and pepper",
 }
-enum Finish {
+export enum Finish {
   balsamic_fig_glaze = "balsamic fig glaze",
   bbq_swirl = "bbq swirl",
   hot_buffalo_sauce = "hot buffalo sauce",
@@ -81,7 +81,7 @@ enum Finish {
   sri_rancha_sauce = "Sri-Rancha Sauce",
   red_sauce = "red sauce",
 }
-enum Dressing {
+export enum Dressing {
   balsamic = "balsamic dressing",
   caesar = "caesar dressing",
   oil_and_vinegar = "oil and vinegar",
@@ -90,7 +90,14 @@ enum Dressing {
   sherry_dijon_vinaigrette = "sherry dijon vinaigrette",
   zesty_roma = "zesty roma dressing",
 }
-type Ingredient = Greens | Sauce | Cheese | Meat | Topping | Finish | Dressing;
+export type Ingredient =
+  | Greens
+  | Sauce
+  | Cheese
+  | Meat
+  | Topping
+  | Finish
+  | Dressing;
 
 // Row 1 - Farthest from workers, closest to customers
 // Row 2 - Middle
@@ -371,4 +378,3 @@ class Ticket {
 }
 
 export { Ticket, menuItems, menuItemNames, ingredientLayout };
-export type { Ingredient };

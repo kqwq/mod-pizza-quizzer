@@ -12,7 +12,7 @@ const MainLayout = () => {
   }, [])
 
   return (
-    <main className="flex flex-col space-y-10 ">
+    <main className="">
       <Top />
       <Makeline />
       <div id="bottom" className="flex flex-row justify-around">
