@@ -30,6 +30,7 @@ enum Cheese {
   gorgonzola = "gorgonzola",
   mozzarella = "mozzarella",
   parmesan = "parmesan",
+  cheddar = "cheddar",
 }
 enum Meat {
   anchovies = "anchovies",
@@ -66,8 +67,8 @@ enum Topping {
   rosemary = "rosemary",
   oregano = "oregano",
   // Salt/Pepper
-  sea_salt = "sea salt",
-  sea_salt_and_pepper = "sea salt and pepper",
+  salt = "salt",
+  salt_and_pepper = "salt and pepper",
 }
 enum Finish {
   balsamic_fig_glaze = "balsamic fig glaze",
@@ -78,6 +79,7 @@ enum Finish {
   ranch_finish = "ranch finish",
   red_sauce_dollops = "red sauce dollops",
   sri_rancha_sauce = "Sri-Rancha Sauce",
+  red_sauce = "red sauce",
 }
 enum Dressing {
   balsamic = "balsamic dressing",
@@ -88,12 +90,124 @@ enum Dressing {
   sherry_dijon_vinaigrette = "sherry dijon vinaigrette",
   zesty_roma = "zesty roma dressing",
 }
+type Ingredient = Greens | Sauce | Cheese | Meat | Topping | Finish | Dressing;
+
+// Row 1 - Farthest from workers, closest to customers
+// Row 2 - Middle
+// Row 3 - Closest to workers, farthest from customers
+const ingredientLayout = [
+  {
+    station: "Point",
+    width: 4,
+    row1: [
+      [Greens.arugula, 2],
+      [Greens.spinach, 2],
+    ],
+    row2: [[Greens.mixed_greens, 2]],
+    row3: [[Greens.romaine, 2]],
+  },
+  {
+    station: "Sauce & Cheese",
+    width: 4,
+    row1: [
+      [Cheese.asiago, 1],
+      [Cheese.feta, 1],
+    ],
+    row2: [
+      [Cheese.gorgonzola, 1],
+      [Cheese.parmesan, 1],
+    ],
+    row3: [
+      [Cheese.cheddar, 1],
+      [Cheese.mozzarella, 2],
+    ],
+  },
+  {
+    station: "Meat",
+    width: 4,
+    row1: [
+      [Meat.anchovies, 1],
+      [Meat.bacon, 1],
+    ],
+    row2: [
+      [Meat.canadian_bacon, 1],
+      [Meat.grilled_chicken, 1],
+      [Meat.ground_beef, 1],
+    ],
+    row3: [
+      [Meat.mild_sausage, 1],
+      [Meat.pepperoni, 1],
+      [Meat.plant_based_italian_sausage, 1],
+    ],
+  },
+  {
+    station: "Veggies",
+    width: 4,
+    row1: [
+      [Topping.artichokes, 1],
+      [Topping.basil, 1],
+    ],
+    row2: [
+      [Topping.black_olives, 1],
+      [Topping.corn, 1],
+    ],
+    row3: [
+      [Topping.croutons, 1],
+      [Topping.chickpeas, 1],
+    ],
+  },
+  {
+    station: "Veggies",
+    width: 4,
+    row1: [
+      [Topping.cucumbers, 1],
+      [Topping.garlic_chopped, 1],
+    ],
+    row2: [
+      [Topping.garlic_roasted, 1],
+      [Topping.green_bell_peppers, 1],
+    ],
+    row3: [
+      [Topping.jalapenos, 1],
+      [Topping.mama_lils_sweet_hot_peppers, 1],
+    ],
+  },
+  {
+    station: "Veggies",
+    width: 4,
+    row1: [
+      [Topping.mushrooms, 1],
+      [Topping.pineapple, 1],
+    ],
+    row2: [
+      [Topping.red_onion, 1],
+      [Topping.roasted_red_peppers, 1],
+    ],
+    row3: [
+      [Topping.sliced_tomatoes, 1],
+      [Topping.diced_tomatoes, 1],
+    ],
+  },
+  {
+    station: "Herbs & Salt/Pepper",
+    width: 4,
+    row1: [
+      [Topping.rosemary, 1],
+      [Topping.oregano, 1],
+    ],
+    row2: [
+      [Topping.salt, 1],
+      [Topping.salt_and_pepper, 1],
+    ],
+    row3: [],
+  },
+];
 
 const pizzaMenuItems = {
   // #1 - maddy
-  maddy: [Sauce.red, Cheese.mozzarella],
+  Maddy: [Sauce.red, Cheese.mozzarella],
   // #2 - maddy + pepperoni, mild sausage, ground beef
-  mad_dog: [
+  MadDog: [
     Sauce.red,
     Cheese.mozzarella,
     Meat.pepperoni,
@@ -101,7 +215,7 @@ const pizzaMenuItems = {
     Meat.ground_beef,
   ],
   // #3 - MA cheese + mushrooms, roasted red peppers, pesto
-  tristan: [
+  Tristin: [
     Sauce.olive_oil, // Not sauce so olive oil
     Cheese.mozzarella,
     Cheese.asiago,
@@ -110,7 +224,7 @@ const pizzaMenuItems = {
     Finish.pesto_drizzle,
   ],
   // #4 - white sauce, basil, A cheese, mild sausage, red onion, sliced tomatoes
-  dominic: [
+  Dominic: [
     Sauce.white,
     Topping.basil,
     Cheese.asiago,
@@ -119,23 +233,23 @@ const pizzaMenuItems = {
     Topping.sliced_tomatoes,
   ],
   // #5 - garlic rub, MP cheese, artichokes, red sauce dollops
-  lucy_sunshine: [
+  LucySunshine: [
     // Is it garlic rub or garlic on top?
-    Sauce.garlic_rub,
+    Topping.garlic_chopped,
     Cheese.mozzarella,
     Cheese.parmesan,
     Topping.artichokes,
     Finish.red_sauce_dollops,
   ],
   // #6 - maddy + mushrooms, spicy chicken sausage
-  jasper: [
+  Jasper: [
     Sauce.red,
     Cheese.mozzarella,
     Meat.spicy_chicken_sausage,
     Topping.mushrooms,
   ],
   // #7 - red sauce, garlic, basil, MA cheese, sliced tomatoes
-  dillon_james: [
+  DillonJames: [
     Sauce.red,
     Topping.garlic_chopped, // I think?
     Topping.basil,
@@ -144,7 +258,7 @@ const pizzaMenuItems = {
     Topping.sliced_tomatoes,
   ],
   // #8 - the spicy pizza
-  calexico: [
+  Calexico: [
     Sauce.red,
     Cheese.mozzarella,
     Cheese.gorgonzola,
@@ -153,7 +267,7 @@ const pizzaMenuItems = {
     Finish.hot_buffalo_sauce, // 7-Finish
   ],
   // #9 - the bbq pizza
-  caspian: [
+  Caspian: [
     Sauce.bbq,
     Cheese.mozzarella,
     Cheese.gorgonzola,
@@ -164,7 +278,7 @@ const pizzaMenuItems = {
 };
 
 const saladMenuItems = {
-  caesar: [
+  Caesar: [
     Greens.romaine,
     Dressing.caesar,
     Cheese.parmesan,
@@ -172,14 +286,14 @@ const saladMenuItems = {
     Topping.diced_tomatoes,
     Topping.croutons,
   ],
-  garden: [
+  Garden: [
     Greens.mixed_greens,
     Greens.romaine,
     Dressing.sherry_dijon_vinaigrette,
     Topping.cucumbers,
     Topping.diced_tomatoes,
   ],
-  greek: [
+  Greek: [
     // Check if we make this still. Tahini dressing?
     Greens.romaine,
     Cheese.feta,
@@ -191,7 +305,7 @@ const saladMenuItems = {
     Topping.cucumbers,
     // Dressing.greek_herb_and_tahini_dressing,
   ],
-  italian_chop: [
+  ItalianChop: [
     // Check if we make this still.
     Greens.romaine,
     Greens.arugula,
@@ -206,17 +320,55 @@ const saladMenuItems = {
   ],
 };
 
+const otherMenuItems = {
+  CheesyGarlicBread: [Cheese.mozzarella, Cheese.parmesan, Topping.rosemary],
+  FourCheesePocketPie: [
+    Sauce.white,
+    Cheese.cheddar,
+    Cheese.mozzarella,
+    Cheese.asiago,
+    Cheese.parmesan,
+  ],
+  ChickenBaconRanchPocketPie: [
+    Sauce.white,
+    Cheese.cheddar,
+    Meat.grilled_chicken,
+    Meat.bacon,
+    Finish.ranch_finish,
+  ],
+  ItalianoPocketPie: [
+    Sauce.white,
+    Cheese.mozzarella,
+    Cheese.parmesan,
+    Meat.pepperoni,
+    Meat.salami,
+    Topping.roasted_red_peppers,
+    Topping.diced_tomatoes,
+    Topping.basil,
+    Greens.arugula,
+    Finish.red_sauce,
+  ],
+};
+
+const menuItems = {
+  ...pizzaMenuItems,
+  ...saladMenuItems,
+  ...otherMenuItems,
+};
+const menuItemNames = Object.keys(menuItems);
+
 class Ticket {
   name: string;
   pizzaNumber: number;
   hereOrTogo: "here" | "togo";
   // pizzas: Pizza[];
 
-  constructor(name, hereOrTogo) {
+  constructor(name: string, hereOrTogo: string) {
     this.name = name;
     this.pizzaNumber = ~~(Math.random() * 300) + 1;
-    this.hereOrTogo = hereOrTogo;
+    this.hereOrTogo = hereOrTogo as "here" | "togo";
   }
 }
 
-export { Ticket };
+export { Ticket, menuItems, menuItemNames, ingredientLayout };
+export type { Ingredient };

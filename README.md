@@ -1,15 +1,8 @@
-# 🚀 Welcome to your new awesome project!
+# mod-pizza-quizzer
 
-This project has been created using **webpack-cli**, you can now run
+## About
 
-```
-npm run build
-```
+## Build from source
 
-or
+This project was configured with webpack 5 + tailwindcss + react.
 
-```
-yarn build
-```
-
-to bundle your application
