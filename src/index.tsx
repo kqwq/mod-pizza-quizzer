@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 // Main layout containing everything
 import MainLayout from "./components/MainLayout";
@@ -11,4 +11,6 @@ function App() {
   return <MainLayout />
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const container = document.getElementById('app') as HTMLElement
+const root = createRoot(container)
+root.render(<App />)

@@ -15,7 +15,7 @@ function underscoreCase(txt: string): string {
 }
 
 function putMakeline() {
-  const makelineDiv = $("#makeline");
+  const makelineDiv = $("#makeline") as HTMLDivElement;
 
   const makelineContainer = document.createElement("div");
   makelineContainer.classList.add(
@@ -75,7 +75,7 @@ function putMakeline() {
     makelineContainer.appendChild(stationDiv);
   }
 
-  // makelineDiv.appendChild(makelineContainer);
+  makelineDiv.appendChild(makelineContainer);
 }
 
 export { putMakeline };
