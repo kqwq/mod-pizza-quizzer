@@ -12,10 +12,12 @@ const MainLayout = () => {
   }, [])
 
   return (
-    <main className="">
-      <Top />
-      <Makeline />
-      <div id="bottom" className="flex flex-row justify-around">
+    <main className="h-screen flex flex-col"  >
+      <div className=''>
+        <Top />
+        <Makeline />
+      </div>
+      <div id="bottom" className="flex flex-row min-h-0 flex-grow-[1]">
         <MenuRef />
         <QuizContainer />
       </div>
