@@ -22,6 +22,7 @@ export enum Sauce {
   red = "red sauce",
   spicy_red = "spicy red sauce",
   white = "white sauce",
+  gooey_cinnamon = "gooey cinnamon",
 }
 export enum Cheese {
   asiago = "asiago",

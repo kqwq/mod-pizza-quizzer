@@ -46,9 +46,10 @@ const Makeline = () => {
       </Section>
       <Section name="Sauces" w={4} gapAfter={MAKELINE_GAP}>
         <Column>
-          <IngBox i={'sauces'} x={0} y={0} w={2} />
-          <IngBox i={'sauces'} x={0} y={1} w={2} />
+          <IngBox i={Sauce.bbq} x={0} y={0} w={2} />
+          <IngBox i={Sauce.white} x={0} y={1} w={2} />
           <IngBox i={Sauce.red} x={0} y={2} w={2} />
+          <IngBox i={Sauce.gooey_cinnamon} x={3} y={2} w={1} />
         </Column>
         <Column>
           <IngBox i={Cheese.cheddar} x={2} y={0} w={2} />
@@ -82,12 +83,13 @@ const Makeline = () => {
         <Grid>
           {/* Top row */}
           <IngBox i={Meat.bacon} x={0} y={0} />
-          <IngBox i={Topping.jalapenos} x={1} y={0} />
-          <IngBox i={Meat.plant_based_italian_sausage} x={2} y={0} />
+          <IngBox i={Meat.plant_based_italian_sausage} x={1} y={0} />
+          <IngBox i={Topping.jalapenos} x={2} y={0} />
           <IngBox i={Topping.corn} x={3} y={0} />
 
           {/* Middle row */}
           <IngBox i={Meat.ground_beef} x={0} y={1} />
+          <IngBox i={Topping.pineapple} x={1} y={1} />
           <IngBox i={Topping.green_bell_peppers} x={2} y={1} />
           <IngBox i={Topping.sliced_tomatoes} x={3} y={1} />
 
@@ -103,13 +105,13 @@ const Makeline = () => {
         <IngBox i={Topping.chickpeas} x={3} y={0} />
 
         {/* Middle row */}
-        <IngBox i={Topping.pineapple} x={0} y={1} />
-        <IngBox i={Topping.garlic_chopped} x={1} y={1} />
+        <IngBox i={Topping.garlic_chopped} x={0} y={1} />
 
         {/* Bottom row */}
-        <IngBox i={Topping.mama_lils_sweet_hot_peppers} x={0} y={2} />
-        <IngBox i={Topping.diced_tomatoes} x={1} y={2} />
-        <IngBox i={Topping.cucumbers} x={2} y={2} />
+        <IngBox i={Topping.roasted_red_peppers} x={0} y={2} />
+        <IngBox i={Topping.mama_lils_sweet_hot_peppers} x={1} y={2} />
+        <IngBox i={Topping.diced_tomatoes} x={2} y={2} />
+        <IngBox i={Topping.cucumbers} x={3} y={2} />
       </Section>
 
     </div >
