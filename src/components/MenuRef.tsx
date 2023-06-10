@@ -1,4 +1,5 @@
 import React from 'react';
+import { menuItemNames } from '../util/makeline';
 import MenuBox from './MenuBox';
 
 const MenuRef = () => {
@@ -9,13 +10,11 @@ const MenuRef = () => {
       </div>
       <div id="grid-container" className="overflow-y-scroll h-full">
         <div className="grid grid-cols-3 gap-4 m-6 min-h-0 ">
-          <MenuBox menuItem="Pizza 1" />
-          <MenuBox menuItem="Pizza 1" />
-          <MenuBox menuItem="Pizza 1" />
-          <MenuBox menuItem="Pizza 1" />
-          <MenuBox menuItem='Pizza 1' />
-          <MenuBox menuItem='Pizza 1' />
-          <MenuBox menuItem='Pizza 1' />
+          {
+            menuItemNames.map((menuItem) => (
+              <MenuBox key={menuItem} menuItem={menuItem} />
+            ))
+          }
         </div>
       </div>
     </div>

@@ -267,4 +267,16 @@ class Ticket {
   }
 }
 
-export { Ticket, menuItems, menuItemNames };
+function menuItemFriendlyNameOf(menuItemName: string): string {
+  // Convert camel case to space-separated words
+  const words = menuItemName.replace(/([a-z])([A-Z])/g, "$1 $2");
+  if (menuItemName in pizzaMenuItems) {
+    return words + " Pizza";
+  }
+  if (menuItemName in saladMenuItems) {
+    return words + " Salad";
+  }
+  return words;
+}
+
+export { Ticket, menuItems, menuItemNames, menuItemFriendlyNameOf };

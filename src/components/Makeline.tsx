@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, WheelEvent, WheelEventHandler } from 'react'
 import { MAKELINE_BOX_HEIGHT, MAKELINE_BOX_WIDTH, MAKELINE_GAP } from '../util/contsants'
 import { Cheese, Greens, Meat, Sauce, Topping } from '../util/makeline'
 import IngBox from './IngredientBox'
@@ -30,9 +30,31 @@ const Grid = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
+
+
 const Makeline = () => {
+  const makelineRef = useRef<HTMLDivElement>(null);
+
+  function onMakelineWheel(event: any) {
+    // Scroll horizontally
+    event.preventDefault();
+    makelineRef.current?.scrollBy({ left: event.deltaY });
+
+  }
+
+
+  React.useEffect(() => {
+    const element = makelineRef.current
+    if (element) {
+      element.addEventListener("wheel", onMakelineWheel, { passive: false });
+      return () => {
+        element.removeEventListener("wheel", onMakelineWheel);
+      };
+    }
+  }, []);
+
   return (
-    <div className="overflow-x-scroll overflow-y-hidden flex flex-row">
+    <div id="makeline" className="overflow-x-scroll overflow-y-hidden flex flex-row z-[4]" ref={makelineRef}>
       <Section name="Greens" w={4} gapAfter={MAKELINE_GAP}>
         <Column>
           <IngBox i={Greens.mixed_greens} x={0} y={0} w={2} h={1.5} />
@@ -98,20 +120,25 @@ const Makeline = () => {
           <IngBox i={Topping.red_onion} x={2} y={2} w={2} />
         </Grid>
       </Section>
-      <Section name="toppings_2" w={4}>
+      <Section name="toppings_2" w={4} gapAfter={MAKELINE_GAP}>
         {/* Top row */}
         <IngBox i={Topping.artichokes} x={0} y={0} />
         <IngBox i={Topping.black_olives} x={1} y={0} />
         <IngBox i={Topping.chickpeas} x={3} y={0} />
 
         {/* Middle row */}
-        <IngBox i={Topping.garlic_chopped} x={0} y={1} />
+        <IngBox i={Topping.roasted_red_peppers} x={0} y={1} />
 
         {/* Bottom row */}
-        <IngBox i={Topping.roasted_red_peppers} x={0} y={2} />
+        <IngBox i={Topping.garlic_roasted} x={0} y={2} />
         <IngBox i={Topping.mama_lils_sweet_hot_peppers} x={1} y={2} />
         <IngBox i={Topping.diced_tomatoes} x={2} y={2} />
         <IngBox i={Topping.cucumbers} x={3} y={2} />
+      </Section>
+      <Section w={1}>
+        <IngBox i={Topping.rosemary} x={0.1} y={0.1} w={0.8} h={0.8} round />
+        <IngBox i={Topping.oregano} x={0.1} y={1.1} w={0.8} h={0.8} round />
+        <IngBox i={Topping.salt_and_pepper} x={0.1} y={2.1} w={0.8} h={0.8} round />
       </Section>
 
     </div >
