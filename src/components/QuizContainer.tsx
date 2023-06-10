@@ -10,7 +10,7 @@ const QuizContainer = () => {
 
 
   return (
-    <div id="quiz-container" className="text-lg flex flex-col justify-center space-y-6 items-center w-full">
+    <div id="quiz-container" className="text-lg flex flex-col justify-center space-y-6 items-center w-full min-h-[170px]">
       <div id="prompt ">
         How do you make a <span id="quiz-menu-item">{friendlyNameMenuItem}</span>?
       </div>
