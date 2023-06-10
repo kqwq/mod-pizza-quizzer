@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { IngredientsContext } from '../util/Provider';
+import { StateContext } from '../util/Provider';
 
 const QuizContainer = () => {
-  const { selectedIngredients } = useContext(IngredientsContext)
+  const { selectedIngredients } = useContext(StateContext)
 
   return (
     <div id="quiz-container" className="text-lg flex flex-col justify-center space-y-6 items-center w-full">

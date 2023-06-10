@@ -1,21 +1,31 @@
 import React, { createContext, useState, useContext } from "react";
 import type { Ingredient } from "./makeline";
 
-interface IngredientsContextType {
+interface StateContextType {
+  // Variables
   selectedIngredients: Ingredient[];
+  quizOrderMenuItems: string[];
+  numMenuItemsCompleted: number;
+  score: number;
+  total: number;
+
+  // Functions
   toggleIngredient: (ingredient: Ingredient) => void;
   clearIngredients: () => void;
+  initMenuItemsQuiz: () => void;
 }
 
-const IngredientsContext = createContext<IngredientsContextType>(
-  {} as IngredientsContextType
+const StateContext = createContext<StateContextType>(
+  {} as StateContextType
 );
 
-interface IngredientsProviderProps {
+interface StateProviderProps {
   children: React.ReactNode;
 }
-const IngredientsProvider: React.FC<IngredientsProviderProps> = ({ children }) => {
+const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
   const [selectedIngredients, setSelectedIngredients] = useState<Ingredient[]>([]);
+  const [quizOrderMenuItems, setQuizOrderMenuItems] = useState<string[]>([]);
+  const [numMenuItemsCompleted, setNumMenuItemsCompleted] = useState(0);
   const [score, setScore] = useState(0);
   const [total, setTotal] = useState(0);
   const [menuItem, setMenuItem] = useState();
@@ -34,17 +44,29 @@ const IngredientsProvider: React.FC<IngredientsProviderProps> = ({ children }) =
     setSelectedIngredients([]);
   };
 
-  const contextValue: IngredientsContextType = {
+  const initMenuItemsQuiz = () => {
+    setQuizOrderMenuItems([]);
+    setNumMenuItemsCompleted(0);
+    setScore(0);
+    setTotal(0);
+  };
+
+  const contextValue: StateContextType = {
     selectedIngredients,
+    quizOrderMenuItems,
+    numMenuItemsCompleted,
+    score,
+    total,
     toggleIngredient,
     clearIngredients,
+    initMenuItemsQuiz,
   };
 
   return (
-    <IngredientsContext.Provider value={contextValue}>
+    <StateContext.Provider value={contextValue}>
       {children}
-    </IngredientsContext.Provider>
+    </StateContext.Provider>
   );
 };
 
-export { IngredientsContext, IngredientsProvider };
+export { StateContext, StateProvider };
