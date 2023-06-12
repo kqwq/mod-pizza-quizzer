@@ -13,7 +13,7 @@ const MainLayout = () => {
         <Top />
         <Makeline />
       </div>
-      <div id="bottom" className="flex flex-row min-h-0 flex-grow-[1]">
+      <div id="bottom" className="h-full flex flex-col md:flex-row md:min-h-0 md:flex-grow-[1]">
         <MenuRef />
         <QuizContainer />
       </div>

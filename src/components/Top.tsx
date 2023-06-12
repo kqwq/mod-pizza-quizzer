@@ -11,10 +11,10 @@ const Top = () => {
 
 
   return (
-    <div className={`h-32 w-full flex items-center justify-between bg-orange-400`}>
+    <div className={`h-16 md:h-32 w-full flex items-center justify-between bg-orange-400`}>
 
-      <h1 className="text-3xl ml-12 font-light hover:underline hover:decoration-dotted hover:cursor-pointer">Mod Pizza Quizzer</h1>
-      <div id="information" className="mr-12 space-x-6">
+      <h1 className="text-xl md:text-3xl ml-6 md:ml-12 font-light hover:underline hover:decoration-dotted hover:cursor-pointer">Mod Pizza Quizzer</h1>
+      <div id="information" className="mr-6 md:mr-12 space-x-3 md:space-x-6">
         {/* Info icon "i" symbol */}
 
         <FontAwesomeIcon className='hover:cursor-pointer' onClick={openInfoModal} color="#333" size="xl" icon={faCircleInfo} />

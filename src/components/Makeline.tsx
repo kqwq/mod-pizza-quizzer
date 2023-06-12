@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, WheelEvent, WheelEventHandler } from 'react'
 import { MAKELINE_BOX_HEIGHT, MAKELINE_BOX_WIDTH, MAKELINE_GAP } from '../util/contsants'
-import { Cheese, Greens, Meat, Sauce, Topping } from '../util/makeline'
+import { Cheese, Dressing, Greens, Meat, Sauce, Topping } from '../util/makeline'
 import IngBox from './IngredientBox'
 
 const Section = ({ name = 'none', w, gapAfter = 0, children }: { name?: string, w: number, gapAfter?: number, children: React.ReactNode }) => {
@@ -54,7 +54,7 @@ const Makeline = () => {
   }, []);
 
   return (
-    <div id="makeline" className="overflow-x-scroll flex flex-row z-[4] mt-10" ref={makelineRef}>
+    <div id="makeline" className="overflow-x-scroll flex flex-row z-[4] mt-2" ref={makelineRef}>
       <Section name="Greens" w={4} gapAfter={MAKELINE_GAP}>
         <Column>
           <IngBox i={Greens.mixed_greens} x={0} y={0} w={2} h={1.5} />
@@ -68,8 +68,26 @@ const Makeline = () => {
       </Section>
       <Section name="Sauces" w={4} gapAfter={MAKELINE_GAP}>
         <Column>
-          <IngBox i={Sauce.bbq} x={0} y={0} w={2} />
-          <IngBox i={Sauce.white} x={0} y={1} w={2} />
+          <IngBox i={"spacer"} x={0} y={0} w={2} />
+          <Grid>
+            <IngBox i={Dressing.balsamic} x={0} y={0} w={0.6} h={0.5} round />
+            <IngBox i={Dressing.caesar} x={0.5} y={0} w={0.6} h={0.5} round />
+            <IngBox i={Dressing.oil_and_vinegar} x={1} y={0} w={0.6} h={0.5} round />
+            <IngBox i={Dressing.ranch} x={0.25} y={0.5} w={0.6} h={0.5} round />
+            <IngBox i={Dressing.sherry_dijon_vinaigrette} x={0.75} y={0.5} w={0.6} h={0.5} round />
+            <IngBox i={Dressing.zesty_roma} x={1.25} y={0.5} w={0.6} h={0.5} round />
+          </Grid>
+          <IngBox i={"spacer"} x={0} y={1} w={2} />
+          <Grid>
+            <IngBox i={Sauce.white} x={0} y={1} w={0.6} h={0.5} round />
+            <IngBox i={Sauce.bbq} x={0.5} y={1} w={0.6} h={0.5} round />
+            <IngBox i={Sauce.pesto} x={1} y={1} w={0.6} h={0.5} round />
+            <IngBox i={Sauce.cream_cheese_icing} x={1.5} y={1} w={0.5} h={0.5} round />
+            <IngBox i={Sauce.white} x={0.25} y={1.5} w={0.6} h={0.5} round />
+            <IngBox i={Sauce.bbq} x={0.75} y={1.5} w={0.6} h={0.5} round />
+            <IngBox i={Dressing.olive_oil} x={1.25} y={1.5} w={0.6} h={0.5} round />
+
+          </Grid>
           <IngBox i={Sauce.red} x={0} y={2} w={2} />
           <IngBox i={Sauce.gooey_cinnamon} x={3} y={2} w={1} />
         </Column>

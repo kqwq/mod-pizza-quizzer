@@ -9,7 +9,7 @@ const IngBox = ({ x, y, i, w = 1, h = 1, round = false }: { x: number, y: number
   const height = MAKELINE_BOX_HEIGHT * (h - marginRatio * 2)
   const xPos = MAKELINE_BOX_WIDTH * (x + marginRatio)
   const yPos = MAKELINE_BOX_HEIGHT * (y + marginRatio)
-  const { toggleIngredient, selectedIngredients } = useContext(StateContext);
+  const { toggleIngredient, selectedIngredients, started } = useContext(StateContext);
   const clickable = i !== "spacer" ? "cursor-pointer" : ""
   let colors;
   if (i === "spacer") {
@@ -41,7 +41,11 @@ const IngBox = ({ x, y, i, w = 1, h = 1, round = false }: { x: number, y: number
               // do nothing
             } else if (i === "finish") {
               // finish pizza
-              submitQuiz();
+              if (started) {
+                submitQuiz();
+              } else {
+                alert("You must start the quiz first!")
+              }
             } else {
               toggleIngredient(i)
             }

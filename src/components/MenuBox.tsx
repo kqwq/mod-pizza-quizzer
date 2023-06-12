@@ -14,11 +14,12 @@ const MenuBox = ({
   const friendlyName = menuItemFriendlyNameOf(menuItem)
   const imgSrc = menuItemImageSourceOf(menuItem)
   const [isHovered, setIsHovered] = useState(false)
+  const bgColor = isCorrect ? "bg-green-400" : isIncorrect ? "bg-red-400" : "bg-white"
 
 
   return (
     <>
-      <div className="relative h-36 bg-white flex justify-center items-center" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+      <div className={`relative h-36 w-36 md:w-auto flex justify-center items-center ${bgColor}`} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         {
           // A tooltip (black rounded box) with white text that has a bullet list of ingredients for the menu item that follows the mouse cursor
           isHovered && <div className="absolute bg-black rounded-md text-white p-2 max-h-full overflow-y-auto select-none">

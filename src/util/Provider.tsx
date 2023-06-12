@@ -98,6 +98,16 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
 
     // Reset selected ingredients
     clearIngredients();
+
+    // Scroll element with id "makeline" to the left
+    const makelineElement = document.getElementById("makeline");
+    if (makelineElement) {
+      makelineElement.scrollBy({
+        left: -makelineElement.offsetWidth,
+        behavior: "smooth",
+      })
+    }
+
   };
 
   const contextValue: StateContextType = {

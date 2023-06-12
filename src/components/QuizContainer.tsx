@@ -12,22 +12,29 @@ const QuizContainer = () => {
 
 
   return (
-    <div id="quiz-container" className="text-lg flex flex-col justify-center space-y-6 items-center w-full min-h-[170px]">
+    <div id="quiz-container" className="text-lg flex flex-col justify-center space-y-6 items-center w-full h-full">
       {
         started ? <>
-          <div id="prompt ">
-            How do you make a <span id="quiz-menu-item">{friendlyNameMenuItem}</span>?
+          <div id="prompt " className='text-xl text-gray-600'>
+            Make a <span id="quiz-menu-item" className="underline">{friendlyNameMenuItem}</span>
           </div>
-          <div id="selected">{selectedText}</div>
+          <div id="selected" className="text-sm">{selectedText}</div>
           <div id="feedback" className="flex flex-row justify-between items-center space-x-4">
-            <button id="btn0" className="bg-orange-500 rounded-md p-2 text-white" onClick={stopQuiz}>Quit</button>
-            <button id="btn1" className="bg-green-600 rounded-md p-2 text-white" onClick={submitQuiz}>Done</button>
+            {/* <button id="btn1" className="bg-green-600 rounded-md p-2 text-white" onClick={submitQuiz}>Done</button> */}
             <div id="score">
               <span id="num-correct">{score}</span>
-              &nbsp;out of&nbsp;
+              &nbsp;/&nbsp;
               <span id="num-total">{numMenuItemsCompleted}</span>
               &nbsp;correct
             </div>
+            <button id="btn0" className="bg-gray-500 text-sm rounded-md p-2 text-white" onClick={() => {
+              const confirm = window.confirm("Are you sure you want to quit? Your progress will be lost.")
+              if (confirm) {
+                stopQuiz()
+              }
+
+            }}>Quit</button>
+
           </div>
         </> : <>
           <div id="prompt">Click "Start Quiz" to begin.</div>

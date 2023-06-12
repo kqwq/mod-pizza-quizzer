@@ -24,6 +24,7 @@ export enum Sauce {
   white = "white sauce",
   gooey_cinnamon = "gooey cinnamon",
   cream_cheese_icing = "cream cheese icing",
+  balsamic_fig_glaze = "balsamic big glaze",
 }
 export enum Cheese {
   asiago = "asiago",
@@ -114,7 +115,6 @@ const pizzaMenuItems = {
   ],
   // #3 - MA cheese + mushrooms, roasted red peppers, pesto
   Tristan: [
-    Sauce.olive_oil, // Not sauce so olive oil
     Cheese.mozzarella,
     Cheese.asiago,
     Topping.mushrooms,
@@ -133,9 +133,9 @@ const pizzaMenuItems = {
   // #5 - garlic rub, MP cheese, artichokes, red sauce dollops
   LucySunshine: [
     // Is it garlic rub or garlic on top?
-    Topping.garlic_chopped,
     Cheese.mozzarella,
     Cheese.parmesan,
+    Topping.garlic_chopped,
     Topping.artichokes,
     Finish.red_sauce_dollops,
   ],
@@ -149,10 +149,10 @@ const pizzaMenuItems = {
   // #7 - red sauce, garlic, basil, MA cheese, sliced tomatoes
   DillonJames: [
     Sauce.red,
-    Topping.garlic_chopped, // I think?
-    Topping.basil,
     Cheese.mozzarella,
     Cheese.asiago,
+    Topping.basil,
+    Topping.garlic_chopped,
     Topping.sliced_tomatoes,
   ],
   // #8 - the spicy pizza
