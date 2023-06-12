@@ -12,7 +12,7 @@ const QuizContainer = () => {
 
 
   return (
-    <div id="quiz-container" className="text-lg flex flex-col justify-center space-y-6 items-center w-full h-full">
+    <div id="quiz-container" className="p-2 text-lg flex flex-col justify-center space-y-6 items-center w-full h-full">
       {
         started ? <>
           <div id="prompt " className='text-xl text-gray-600'>
