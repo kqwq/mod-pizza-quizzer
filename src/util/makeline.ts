@@ -83,6 +83,7 @@ export enum Finish {
   red_sauce_dollops = "XPO red sauce dollops",
   sri_rancha_sauce = "XPO Sri-Rancha Sauce",
   red_sauce = "XPO red sauce",
+  arugula = "XPO arugula",
 }
 export enum Dressing {
   balsamic = "balsamic dressing",
@@ -243,8 +244,8 @@ const otherMenuItems = {
     Topping.roasted_red_peppers,
     Topping.diced_tomatoes,
     Topping.basil,
-    Greens.arugula,
     Finish.red_sauce,
+    Finish.arugula,
   ],
   Cinnaslice: [Sauce.gooey_cinnamon, Sauce.cream_cheese_icing],
 };
