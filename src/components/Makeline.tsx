@@ -120,14 +120,18 @@ const Makeline = () => {
           <IngBox i={Topping.red_onion} x={2} y={2} w={2} />
         </Grid>
       </Section>
-      <Section name="toppings_2" w={4} gapAfter={MAKELINE_GAP}>
+      <Section name="toppings_2" w={4} gapAfter={0}>
         {/* Top row */}
         <IngBox i={Topping.artichokes} x={0} y={0} />
         <IngBox i={Topping.black_olives} x={1} y={0} />
+        <IngBox i={"spacer"} x={2} y={0} />
         <IngBox i={Topping.chickpeas} x={3} y={0} />
 
         {/* Middle row */}
         <IngBox i={Topping.roasted_red_peppers} x={0} y={1} />
+        <IngBox i={"spacer"} x={1} y={1} />
+        <IngBox i={"spacer"} x={2} y={1} />
+        <IngBox i={"spacer"} x={3} y={1} />
 
         {/* Bottom row */}
         <IngBox i={Topping.garlic_roasted} x={0} y={2} />
@@ -135,10 +139,13 @@ const Makeline = () => {
         <IngBox i={Topping.diced_tomatoes} x={2} y={2} />
         <IngBox i={Topping.cucumbers} x={3} y={2} />
       </Section>
-      <Section w={1}>
+      <Section w={1} gapAfter={0}>
         <IngBox i={Topping.rosemary} x={0.1} y={0.1} w={0.8} h={0.8} round />
         <IngBox i={Topping.oregano} x={0.1} y={1.1} w={0.8} h={0.8} round />
         <IngBox i={Topping.salt_and_pepper} x={0.1} y={2.1} w={0.8} h={0.8} round />
+      </Section>
+      <Section w={1}>
+        <IngBox i={"finish"} x={0} y={0} w={2} h={3} />
       </Section>
 
     </div >

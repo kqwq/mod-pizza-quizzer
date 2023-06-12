@@ -23,6 +23,7 @@ export enum Sauce {
   spicy_red = "spicy red sauce",
   white = "white sauce",
   gooey_cinnamon = "gooey cinnamon",
+  cream_cheese_icing = "cream cheese icing",
 }
 export enum Cheese {
   asiago = "asiago",
@@ -72,15 +73,15 @@ export enum Topping {
   salt_and_pepper = "salt and pepper",
 }
 export enum Finish {
-  balsamic_fig_glaze = "balsamic fig glaze",
-  bbq_swirl = "bbq swirl",
-  hot_buffalo_sauce = "hot buffalo sauce",
-  mikes_hot_honey = "Mike's Hot Honey",
-  pesto_drizzle = "Pesto Drizzle", // 7-Finish
-  ranch_finish = "ranch finish",
-  red_sauce_dollops = "red sauce dollops",
-  sri_rancha_sauce = "Sri-Rancha Sauce",
-  red_sauce = "red sauce",
+  balsamic_fig_glaze = "XPO balsamic fig glaze",
+  bbq_swirl = "XPO bbq swirl",
+  hot_buffalo_sauce = "XPO hot buffalo sauce",
+  mikes_hot_honey = "XPO Mike's Hot Honey",
+  pesto_drizzle = "XPO pesto drizzle", // 7-Finish
+  ranch_finish = "XPO ranch finish",
+  red_sauce_dollops = "XPO red sauce dollops",
+  sri_rancha_sauce = "XPO Sri-Rancha Sauce",
+  red_sauce = "XPO red sauce",
 }
 export enum Dressing {
   balsamic = "balsamic dressing",
@@ -112,7 +113,7 @@ const pizzaMenuItems = {
     Meat.ground_beef,
   ],
   // #3 - MA cheese + mushrooms, roasted red peppers, pesto
-  Tristin: [
+  Tristan: [
     Sauce.olive_oil, // Not sauce so olive oil
     Cheese.mozzarella,
     Cheese.asiago,
@@ -245,6 +246,7 @@ const otherMenuItems = {
     Greens.arugula,
     Finish.red_sauce,
   ],
+  Cinnaslice: [Sauce.gooey_cinnamon, Sauce.cream_cheese_icing],
 };
 
 const menuItems = {
@@ -271,7 +273,8 @@ function menuItemFriendlyNameOf(menuItemName: string): string {
   // Convert camel case to space-separated words
   const words = menuItemName.replace(/([a-z])([A-Z])/g, "$1 $2");
   if (menuItemName in pizzaMenuItems) {
-    return words + " Pizza";
+    return words;
+    // return words + " Pizza";
   }
   if (menuItemName in saladMenuItems) {
     return words + " Salad";
@@ -279,4 +282,32 @@ function menuItemFriendlyNameOf(menuItemName: string): string {
   return words;
 }
 
-export { Ticket, menuItems, menuItemNames, menuItemFriendlyNameOf };
+function menuItemImageSourceOf(menuItemName: string): string {
+  if (menuItemName === "CheesyGarlicBread") {
+    return "/assets/other_menu/CheesyGarlicBread.png";
+  }
+  if (menuItemName in pizzaMenuItems) {
+    return `/assets/pizza/${menuItemName}.png`;
+  }
+  if (menuItemName in saladMenuItems) {
+    return `/assets/salad/${menuItemName}.png`;
+  }
+  return `/assets/other_menu/${menuItemName}.webp`;
+}
+
+function menuItemToppingsMinusExpo(menuItemName: string): Topping[] {
+  // Gets the list of toppings minus any toppings that begin with "XPO"
+  const toppings = menuItems[
+    menuItemName as keyof typeof menuItems
+  ] as Topping[];
+  return toppings.filter((topping) => !topping.startsWith("XPO"));
+}
+
+export {
+  Ticket,
+  menuItems,
+  menuItemNames,
+  menuItemToppingsMinusExpo,
+  menuItemFriendlyNameOf,
+  menuItemImageSourceOf,
+};

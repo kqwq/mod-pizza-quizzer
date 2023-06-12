@@ -11,12 +11,14 @@ interface StateContextType {
   incorrectMenuItems: string[];
   score: number;
   total: number;
+  started: boolean;
 
   // Functions
   toggleIngredient: (ingredient: Ingredient) => void;
   clearIngredients: () => void;
   initMenuItemsQuiz: () => void;
   submitQuiz: () => void;
+  stopQuiz: () => void;
 }
 
 const StateContext = createContext<StateContextType>(
@@ -34,6 +36,7 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
   const [incorrectMenuItems, setIncorrectMenuItems] = useState<string[]>([]);
   const [score, setScore] = useState(0);
   const [total, setTotal] = useState(0);
+  const [started, setStarted] = useState(false);
 
   const toggleIngredient = (newIngredient: Ingredient) => {
     setSelectedIngredients((prevIngredients) => {
@@ -49,6 +52,10 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
     setSelectedIngredients([]);
   };
 
+  const stopQuiz = () => {
+    setStarted(false);
+  };
+
   const initMenuItemsQuiz = () => {
     // Reset state
     setQuizOrderMenuItems([]);
@@ -57,6 +64,7 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
     setIncorrectMenuItems([]);
     setScore(0);
     setTotal(0);
+    setStarted(true)
 
     // Shuffle menu items
     const menuItemNamesShuffled = shuffleItems(menuItemNames);
@@ -100,16 +108,13 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
     incorrectMenuItems,
     score,
     total,
+    started,
     toggleIngredient,
     clearIngredients,
     initMenuItemsQuiz,
-    submitQuiz
+    submitQuiz,
+    stopQuiz,
   };
-
-  // First time only
-  if (quizOrderMenuItems.length === 0) {
-    initMenuItemsQuiz();
-  }
 
   return (
     <StateContext.Provider value={contextValue}>
