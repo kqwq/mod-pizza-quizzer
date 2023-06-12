@@ -54,7 +54,7 @@ const Makeline = () => {
   }, []);
 
   return (
-    <div id="makeline" className="overflow-x-scroll overflow-y-hidden flex flex-row z-[4]" ref={makelineRef}>
+    <div id="makeline" className="overflow-x-scroll flex flex-row z-[4] mt-10" ref={makelineRef}>
       <Section name="Greens" w={4} gapAfter={MAKELINE_GAP}>
         <Column>
           <IngBox i={Greens.mixed_greens} x={0} y={0} w={2} h={1.5} />

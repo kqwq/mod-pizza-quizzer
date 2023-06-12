@@ -28,7 +28,7 @@ const MenuBox = ({
             <ul className="list-disc ml-4">
               {
                 ingredients.map((ingredient) => (
-                  <li className={`text-sm " ${ingredient.startsWith("XPO") ? " italic text-gray-500" : ""}`} key={ingredient}>{ingredient}</li>
+                  <li className={`text-xs " ${ingredient.startsWith("XPO") ? " italic text-gray-500" : ""}`} key={ingredient}>{ingredient}</li>
                 ))
               }
             </ul>
