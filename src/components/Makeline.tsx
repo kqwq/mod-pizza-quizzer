@@ -146,13 +146,13 @@ const Makeline = () => {
         <IngBox i={Topping.chickpeas} x={3} y={0} />
 
         {/* Middle row */}
-        <IngBox i={Topping.roasted_red_peppers} x={0} y={1} />
+        <IngBox i={Topping.garlic_roasted} x={0} y={1} />
         <IngBox i={"spacer"} x={1} y={1} />
         <IngBox i={"spacer"} x={2} y={1} />
-        <IngBox i={"spacer"} x={3} y={1} />
+        <IngBox i={Topping.croutons} x={3} y={1} />
 
         {/* Bottom row */}
-        <IngBox i={Topping.garlic_roasted} x={0} y={2} />
+        <IngBox i={Topping.roasted_red_peppers} x={0} y={2} />
         <IngBox i={Topping.mama_lils_sweet_hot_peppers} x={1} y={2} />
         <IngBox i={Topping.diced_tomatoes} x={2} y={2} />
         <IngBox i={Topping.cucumbers} x={3} y={2} />

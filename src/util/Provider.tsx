@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
 import { shuffleItems } from "./algorithms";
-import { Ingredient, menuItemNames, menuItems } from "./makeline";
+import { Ingredient, menuItemNames, menuItems, menuItemToppingsMinusExpo } from "./makeline";
 
 interface StateContextType {
   // Variables
@@ -9,6 +9,7 @@ interface StateContextType {
   numMenuItemsCompleted: number;
   correctMenuItems: string[];
   incorrectMenuItems: string[];
+  wrongIngredients: Ingredient[];
   score: number;
   total: number;
   started: boolean;
@@ -28,12 +29,22 @@ const StateContext = createContext<StateContextType>(
 interface StateProviderProps {
   children: React.ReactNode;
 }
+
+function twoArraysContainSameElements<T>(a: T[], b: T[]) {
+  return (
+    a.length === b.length &&
+    a.every((element) => b.includes(element)) &&
+    b.every((element) => a.includes(element))
+  );
+}
+
 const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
   const [selectedIngredients, setSelectedIngredients] = useState<Ingredient[]>([]);
   const [quizOrderMenuItems, setQuizOrderMenuItems] = useState<string[]>([]);
   const [numMenuItemsCompleted, setNumMenuItemsCompleted] = useState(0);
   const [correctMenuItems, setCorrectMenuItems] = useState<string[]>([]);
   const [incorrectMenuItems, setIncorrectMenuItems] = useState<string[]>([]);
+  const [wrongIngredients, setWrongIngredients] = useState<Ingredient[]>([]);
   const [score, setScore] = useState(0);
   const [total, setTotal] = useState(0);
   const [started, setStarted] = useState(false);
@@ -62,6 +73,7 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
     setNumMenuItemsCompleted(0);
     setCorrectMenuItems([]);
     setIncorrectMenuItems([]);
+    setWrongIngredients([]);
     setScore(0);
     setTotal(0);
     setStarted(true)
@@ -77,16 +89,16 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
 
     // Check if correct
     const currentMenuItem = quizOrderMenuItems[numMenuItemsCompleted];
-    const currentMenuItemIngredients = menuItems[currentMenuItem as keyof typeof menuItems];
-    const currentMenuItemIngredientsSorted = currentMenuItemIngredients.sort();
-    const selectedIngredientsSorted = selectedIngredients.sort();
-    const isCorrect = JSON.stringify(currentMenuItemIngredientsSorted) === JSON.stringify(selectedIngredientsSorted);
+    const currentMenuItemIngredients = menuItemToppingsMinusExpo(currentMenuItem);
+    const isCorrect = twoArraysContainSameElements(currentMenuItemIngredients, selectedIngredients);
 
     // Increment score if correct
     if (isCorrect) {
       setScore((prevScore) => prevScore + 1);
+      setWrongIngredients([]);
       setCorrectMenuItems((prevCorrectMenuItems) => [...prevCorrectMenuItems, currentMenuItem]);
     } else {
+      setWrongIngredients(selectedIngredients);
       setIncorrectMenuItems((prevIncorrectMenuItems) => [...prevIncorrectMenuItems, currentMenuItem]);
     }
 
@@ -94,7 +106,11 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
     setTotal((prevTotal) => prevTotal + 1);
 
     // Increment number of menu items completed
+    if (numMenuItemsCompleted >= quizOrderMenuItems.length - 1) {
+      stopQuiz();
+    }
     setNumMenuItemsCompleted((prevNumMenuItemsCompleted) => prevNumMenuItemsCompleted + 1);
+
 
     // Reset selected ingredients
     clearIngredients();
@@ -102,8 +118,8 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
     // Scroll element with id "makeline" to the left
     const makelineElement = document.getElementById("makeline");
     if (makelineElement) {
-      makelineElement.scrollBy({
-        left: -makelineElement.offsetWidth,
+      makelineElement.scrollTo({
+        left: 0,
         behavior: "smooth",
       })
     }
@@ -116,6 +132,7 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
     numMenuItemsCompleted,
     correctMenuItems,
     incorrectMenuItems,
+    wrongIngredients,
     score,
     total,
     started,
