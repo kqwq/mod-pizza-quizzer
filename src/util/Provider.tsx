@@ -79,7 +79,7 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
     setStarted(true)
 
     // Shuffle menu items
-    const menuItemNamesShuffled = shuffleItems(menuItemNames);
+    const menuItemNamesShuffled = shuffleItems([...menuItemNames]);
 
     // Set state
     setQuizOrderMenuItems(menuItemNamesShuffled);
