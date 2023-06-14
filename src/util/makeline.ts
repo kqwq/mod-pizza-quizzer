@@ -135,9 +135,9 @@ const pizzaMenuItems = {
   // #5 - garlic rub, MP cheese, artichokes, red sauce dollops
   LucySunshine: [
     // Is it garlic rub or garlic on top?
+    Topping.garlic_chopped,
     Cheese.mozzarella,
     Cheese.parmesan,
-    Topping.garlic_chopped,
     Topping.artichokes,
     Finish.red_sauce_dollops,
   ],
@@ -151,10 +151,10 @@ const pizzaMenuItems = {
   // #7 - red sauce, garlic, basil, MA cheese, sliced tomatoes
   DillonJames: [
     Sauce.red,
+    Topping.garlic_chopped,
+    Topping.basil,
     Cheese.mozzarella,
     Cheese.asiago,
-    Topping.basil,
-    Topping.garlic_chopped,
     Topping.sliced_tomatoes,
   ],
   // #8 - the spicy pizza

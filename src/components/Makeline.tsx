@@ -70,14 +70,14 @@ const Makeline = () => {
         <Column>
           <IngBox i={"spacer"} x={0} y={0} w={2} />
           <Grid>
-            <IngBox i={Dressing.balsamic} x={0} y={0} w={0.6} h={0.5} round />
-            <IngBox i={Dressing.caesar} x={0.5} y={0} w={0.6} h={0.5} round />
-            <IngBox i={Dressing.oil_and_vinegar} x={1} y={0} w={0.6} h={0.5} round />
-            <IngBox i={Sauce.cream_cheese_icing} x={0.25} y={0.5} w={0.6} h={0.5} round />
-            <IngBox i={Dressing.sherry_dijon_vinaigrette} x={0.75} y={0.5} w={0.6} h={0.5} round />
-            <IngBox i={Dressing.zesty_roma} x={1.25} y={0.5} w={0.6} h={0.5} round />
-            <IngBox i={Dressing.ranch} x={1.5} y={0} w={0.5} h={0.5} round />
-            <IngBox i={Dressing.zesty_roma} x={1.25} y={0.5} w={0.6} h={0.5} round />
+            <IngBox i={Dressing.balsamic} x={0} y={0} w={0.55} h={0.5} round />
+            <IngBox i={Dressing.caesar} x={0.48} y={0} w={0.55} h={0.5} round />
+            <IngBox i={Dressing.oil_and_vinegar} x={0.96} y={0} w={0.55} h={0.5} round />
+            <IngBox i={Dressing.ranch} x={1.44} y={0} w={0.55} h={0.5} round />
+            <IngBox i={Sauce.cream_cheese_icing} x={0} y={0.5} w={0.55} h={0.5} round />
+            <IngBox i={Dressing.sherry_dijon_vinaigrette} x={0.48} y={0.5} w={0.55} h={0.5} round />
+            <IngBox i={Dressing.zesty_roma} x={0.96} y={0.5} w={0.55} h={0.5} round />
+            <IngBox i={Dressing.greek_herb_and_tahini_dressing} x={1.44} y={0.5} w={0.55} h={0.5} round />
           </Grid>
           <IngBox i={"spacer"} x={0} y={1} w={2} />
           <Grid>
@@ -94,8 +94,8 @@ const Makeline = () => {
         </Column>
         <Column>
           <IngBox i={Cheese.cheddar} x={2} y={0} w={2} />
-          <IngBox i={Topping.basil} x={2} y={1} />
-          <IngBox i={Topping.garlic_chopped} x={3} y={1} />
+          <IngBox i={Topping.garlic_chopped} x={2} y={1} />
+          <IngBox i={Topping.basil} x={3} y={1} />
           <IngBox i={Sauce.spicy_red} x={2} y={2} />
         </Column>
       </Section>
