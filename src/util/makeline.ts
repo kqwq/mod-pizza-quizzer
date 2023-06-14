@@ -91,6 +91,7 @@ export enum Dressing {
   oil_and_vinegar = "oil and vinegar",
   olive_oil = "olive oil",
   ranch = "ranch dressing",
+  greek_herb_and_tahini_dressing = "greek herb & tahini dressing",
   sherry_dijon_vinaigrette = "sherry dijon vinaigrette",
   zesty_roma = "zesty roma dressing",
 }
@@ -195,6 +196,7 @@ const saladMenuItems = {
   Greek: [
     // Check if we make this still. Tahini dressing?
     Greens.romaine,
+    Dressing.greek_herb_and_tahini_dressing,
     Cheese.feta,
     Topping.red_onion,
     Topping.black_olives,
@@ -202,12 +204,12 @@ const saladMenuItems = {
     Topping.diced_tomatoes,
     Topping.chickpeas,
     Topping.cucumbers,
-    // Dressing.greek_herb_and_tahini_dressing,
   ],
   ItalianChop: [
     // Check if we make this still.
     Greens.romaine,
     Greens.arugula,
+    Dressing.zesty_roma,
     Cheese.mozzarella,
     Cheese.parmesan,
     Meat.salami,
@@ -215,7 +217,6 @@ const saladMenuItems = {
     Topping.black_olives,
     Topping.chickpeas,
     Topping.green_bell_peppers,
-    Dressing.zesty_roma,
   ],
 };
 
