@@ -60,7 +60,7 @@ const IngBox = ({ x, y, i, w = 1, h = 1, round = false }: { x: number, y: number
           showImage ? <img className={` max-w-[85%] max-h-[85%] ${roundStyle}`} src={imgSrc} alt={i as string} /> : (i === "finish" ? <div className="p-4 text-xl font-bold text-white text-center">Click to Finish</div> : "")
 
         }
-        <span className={`absolute bottom-0 right-0 ${tooltipVisible ? "block" : "hidden"} bg-black text-white text-xs p-1 rounded-md pointer-events-none`}>
+        <span className={`absolute bottom-0 right-0 ${tooltipVisible ? "block" : "hidden"} bg-black text-white text-xs p-1 rounded-md pointer-events-none z-20`}>
           {i}
         </span>
 
