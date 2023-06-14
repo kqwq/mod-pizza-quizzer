@@ -8,7 +8,8 @@ const CroppedImg = ({ src, alt, scale, extraStyle = "" }: { src: string, alt: st
     <div className={`relative overflow-hidden w-full h-full ${extraStyle} bg-white`}>
       <img style={{
         transform: `scale(${scale})`,
-      }} className={`object-fill absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto  `} src={src} alt={alt} />
+
+      }} className={`pointer-events-none object-fill absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto  `} src={src} alt={alt} />
     </div>
   )
 }
