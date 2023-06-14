@@ -30,7 +30,7 @@ const IngBox = ({ x, y, i, w = 1, h = 1, round = false }: { x: number, y: number
   if (i === "spacer") {
     colors = "bg-gray-300 "
   } else {
-    colors = selectedIngredients.includes(i as Ingredient) ? "bg-green-400 hover:bg-green-500 z-10" : `${idleColor} hover:bg-slate-400`;
+    colors = selectedIngredients.includes(i as Ingredient) ? "bg-green-500 hover:bg-green-600 z-10" : `${idleColor} hover:bg-slate-400`;
   }
   const roundStyle = round ? "rounded-full" : "rounded-md"
   const showImage = i !== "spacer" && i !== "finish"
