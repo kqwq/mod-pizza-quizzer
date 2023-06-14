@@ -73,7 +73,7 @@ const Makeline = () => {
             <IngBox i={Dressing.balsamic} x={0} y={0} w={0.6} h={0.5} round />
             <IngBox i={Dressing.caesar} x={0.5} y={0} w={0.6} h={0.5} round />
             <IngBox i={Dressing.oil_and_vinegar} x={1} y={0} w={0.6} h={0.5} round />
-            <IngBox i={Sauce.cream_cheese_icing} x={0.25} y={0.5} w={0.5} h={0.5} round />
+            <IngBox i={Sauce.cream_cheese_icing} x={0.25} y={0.5} w={0.6} h={0.5} round />
             <IngBox i={Dressing.sherry_dijon_vinaigrette} x={0.75} y={0.5} w={0.6} h={0.5} round />
             <IngBox i={Dressing.zesty_roma} x={1.25} y={0.5} w={0.6} h={0.5} round />
             <IngBox i={Dressing.ranch} x={1.5} y={0} w={0.5} h={0.5} round />
@@ -159,10 +159,10 @@ const Makeline = () => {
         <IngBox i={Topping.cucumbers} x={3} y={2} />
       </Section>
       <Section w={1} gapAfter={0}>
-        <IngBox i={Topping.rosemary} x={0.1} y={0} w={0.8} h={0.8} round />
-        <IngBox i={Topping.oregano} x={0.1} y={0.7} w={0.8} h={0.8} round />
-        <IngBox i={Topping.salt_and_pepper} x={0.1} y={1.4} w={0.8} h={0.8} round />
-        <IngBox i={Topping.croutons} x={0.1} y={2.2} w={0.8} h={0.8} round />
+        <IngBox i={Topping.rosemary} x={0.1} y={0} w={0.9} h={0.8} round />
+        <IngBox i={Topping.oregano} x={0.1} y={0.7} w={0.9} h={0.8} round />
+        <IngBox i={Topping.salt_and_pepper} x={0.1} y={1.4} w={0.9} h={0.8} round />
+        <IngBox i={Topping.croutons} x={0.1} y={2.2} w={0.9} h={0.8} round />
       </Section>
       <Section w={1}>
         <IngBox i={"finish"} x={0} y={0} w={2} h={3} />
