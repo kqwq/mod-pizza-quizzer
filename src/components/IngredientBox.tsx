@@ -51,7 +51,7 @@ const IngBox = ({ x, y, i, w = 1, h = 1, round = false }: { x: number, y: number
             }
           }
         }
-        onMouseOver={() => setTooltipVisible(true)}
+        onMouseOver={() => clickable && setTooltipVisible(true)}
         onMouseOut={() => setTooltipVisible(false)}
         className={
           `w-[${width}px] h-[${height}px] ${clickable} ${colors} top-[${yPos}px] left-[${xPos}px] ${roundStyle} absolute flex justify-center items-center select-none`
@@ -60,7 +60,7 @@ const IngBox = ({ x, y, i, w = 1, h = 1, round = false }: { x: number, y: number
           showImage ? <img className={` max-w-[85%] max-h-[85%] ${roundStyle}`} src={imgSrc} alt={i as string} /> : (i === "finish" ? <div className="p-4 text-xl font-bold text-white text-center">Click to Finish</div> : "")
 
         }
-        <span className={`absolute bottom-0 right-0 ${tooltipVisible ? "block" : "hidden"} bg-black text-white text-xs p-1 rounded-md`}>
+        <span className={`absolute bottom-0 right-0 ${tooltipVisible ? "block" : "hidden"} bg-black text-white text-xs p-1 rounded-md pointer-events-none`}>
           {i}
         </span>
 
