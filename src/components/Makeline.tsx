@@ -61,9 +61,9 @@ const Makeline = () => {
           <IngBox i={Greens.romaine} x={0} y={1.5} w={2} h={1.5} />
         </Column>
         <Column>
-          <IngBox i={Greens.spinach} x={2} y={0} w={2} />
+          <IngBox i={'spacer'} x={2} y={0} w={2} />
           <IngBox i={Greens.arugula} x={2} y={1} w={2} />
-          <IngBox i={'spacer'} x={2} y={2} w={2} />
+          <IngBox i={Greens.spinach} x={2} y={2} w={2} />
         </Column>
       </Section>
       <Section name="Sauces" w={4} gapAfter={MAKELINE_GAP}>
@@ -73,19 +73,20 @@ const Makeline = () => {
             <IngBox i={Dressing.balsamic} x={0} y={0} w={0.6} h={0.5} round />
             <IngBox i={Dressing.caesar} x={0.5} y={0} w={0.6} h={0.5} round />
             <IngBox i={Dressing.oil_and_vinegar} x={1} y={0} w={0.6} h={0.5} round />
-            <IngBox i={Dressing.ranch} x={0.25} y={0.5} w={0.6} h={0.5} round />
+            <IngBox i={Sauce.cream_cheese_icing} x={0.25} y={0.5} w={0.5} h={0.5} round />
             <IngBox i={Dressing.sherry_dijon_vinaigrette} x={0.75} y={0.5} w={0.6} h={0.5} round />
             <IngBox i={Dressing.zesty_roma} x={1.25} y={0.5} w={0.6} h={0.5} round />
+            <IngBox i={Dressing.ranch} x={1.5} y={0} w={0.5} h={0.5} round />
+            <IngBox i={Dressing.olive_oil} x={1.25} y={0.5} w={0.6} h={0.5} round />
           </Grid>
           <IngBox i={"spacer"} x={0} y={1} w={2} />
           <Grid>
-            <IngBox i={Sauce.white} x={0} y={1} w={0.6} h={0.5} round />
-            <IngBox i={Sauce.bbq} x={0.5} y={1} w={0.6} h={0.5} round />
-            <IngBox i={Sauce.pesto} x={1} y={1} w={0.6} h={0.5} round />
-            <IngBox i={Sauce.cream_cheese_icing} x={1.5} y={1} w={0.5} h={0.5} round />
-            <IngBox i={Sauce.white} x={0.25} y={1.5} w={0.6} h={0.5} round />
-            <IngBox i={Sauce.bbq} x={0.75} y={1.5} w={0.6} h={0.5} round />
-            <IngBox i={Dressing.olive_oil} x={1.25} y={1.5} w={0.6} h={0.5} round />
+            <IngBox i={Sauce.bbq} x={0.25} y={1} w={0.6} h={0.5} round />
+            <IngBox i={Sauce.bbq} x={0.25} y={1.5} w={0.6} h={0.5} round />
+            <IngBox i={Sauce.pesto} x={0.75} y={1} w={0.6} h={0.5} round />
+            <IngBox i={Sauce.pesto} x={0.75} y={1.5} w={0.6} h={0.5} round />
+            <IngBox i={Sauce.white} x={1.25} y={1} w={0.6} h={0.5} round />
+            <IngBox i={Sauce.white} x={1.25} y={1.5} w={0.6} h={0.5} round />
 
           </Grid>
           <IngBox i={Sauce.red} x={0} y={2} w={2} />
@@ -93,17 +94,17 @@ const Makeline = () => {
         </Column>
         <Column>
           <IngBox i={Cheese.cheddar} x={2} y={0} w={2} />
-          <IngBox i={Topping.garlic_chopped} x={2} y={1} />
-          <IngBox i={Topping.basil} x={3} y={1} />
+          <IngBox i={Topping.basil} x={2} y={1} />
+          <IngBox i={Topping.garlic_chopped} x={3} y={1} />
           <IngBox i={Sauce.spicy_red} x={2} y={2} />
         </Column>
       </Section>
       <Section name="Cheeses" w={2}>
         <Grid>
-          <IngBox i={Cheese.parmesan} x={0} y={0} />
-          <IngBox i={Cheese.feta} x={1} y={0} />
-          <IngBox i={Cheese.asiago} x={0} y={1} />
-          <IngBox i={Cheese.gorgonzola} x={1} y={1} />
+          <IngBox i={Cheese.feta} x={0} y={0} />
+          <IngBox i={Cheese.parmesan} x={1} y={0} />
+          <IngBox i={Cheese.gorgonzola} x={0} y={1} />
+          <IngBox i={Cheese.asiago} x={1} y={1} />
           <IngBox i={Cheese.mozzarella} x={0} y={2} w={2} />
         </Grid>
       </Section>
@@ -123,8 +124,8 @@ const Makeline = () => {
         <Grid>
           {/* Top row */}
           <IngBox i={Meat.bacon} x={0} y={0} />
-          <IngBox i={Meat.plant_based_italian_sausage} x={1} y={0} />
-          <IngBox i={Topping.jalapenos} x={2} y={0} />
+          <IngBox i={Topping.jalapenos} x={1} y={0} />
+          <IngBox i={Meat.plant_based_italian_sausage} x={2} y={0} />
           <IngBox i={Topping.corn} x={3} y={0} />
 
           {/* Middle row */}
@@ -149,7 +150,7 @@ const Makeline = () => {
         <IngBox i={Topping.garlic_roasted} x={0} y={1} />
         <IngBox i={"spacer"} x={1} y={1} />
         <IngBox i={"spacer"} x={2} y={1} />
-        <IngBox i={Topping.croutons} x={3} y={1} />
+        <IngBox i={"spacer"} x={3} y={1} />
 
         {/* Bottom row */}
         <IngBox i={Topping.roasted_red_peppers} x={0} y={2} />
@@ -158,9 +159,10 @@ const Makeline = () => {
         <IngBox i={Topping.cucumbers} x={3} y={2} />
       </Section>
       <Section w={1} gapAfter={0}>
-        <IngBox i={Topping.rosemary} x={0.1} y={0.1} w={0.8} h={0.8} round />
-        <IngBox i={Topping.oregano} x={0.1} y={1.1} w={0.8} h={0.8} round />
-        <IngBox i={Topping.salt_and_pepper} x={0.1} y={2.1} w={0.8} h={0.8} round />
+        <IngBox i={Topping.rosemary} x={0.1} y={0} w={0.8} h={0.8} round />
+        <IngBox i={Topping.oregano} x={0.1} y={0.7} w={0.8} h={0.8} round />
+        <IngBox i={Topping.salt_and_pepper} x={0.1} y={1.4} w={0.8} h={0.8} round />
+        <IngBox i={Topping.croutons} x={0.1} y={2.2} w={0.8} h={0.8} round />
       </Section>
       <Section w={1}>
         <IngBox i={"finish"} x={0} y={0} w={2} h={3} />
