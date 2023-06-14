@@ -24,6 +24,7 @@ const IngBox = ({ x, y, i, w = 1, h = 1, round = false }: { x: number, y: number
   const idleColor = w <= 0.6 ? "bg-white" : "bg-gray-300"
   let scaleFactor = 1;
   if (w <= 0.6) scaleFactor = 1.7;
+  if (w === 0.9) scaleFactor = 1.4;
   if (w === 1) scaleFactor = 1.4;
   if (w === 2) scaleFactor = 0.7;
   let colors;
