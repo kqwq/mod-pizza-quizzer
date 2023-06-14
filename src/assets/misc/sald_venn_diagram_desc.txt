@@ -1,0 +1,13 @@
+# Mod pizza salads venn diagram
+
+Excluding Caesar salad and all dressings.
+
+Caesar salad:
+romaine, caesar dressing, asiago, parm., diced toms, croutons
+
+Dressings:
+Garden | Sherry dijon vinaigrette
+Greek | Greek herb & tahini dressing
+Italian Chop | Zesty roma dressing
+
+View online at: www.classtools.net/Venn/202306-GardenSaladGreekSaladItalianChopSaladdcGJiQ
