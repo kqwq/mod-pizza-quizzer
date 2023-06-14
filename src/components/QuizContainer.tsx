@@ -46,10 +46,10 @@ const QuizContainer = () => {
   const [modal, setModal] = useState<"hidden" | "instructions" | "wrong" | "complete">("hidden");
 
   useEffect(() => {
-    if (numMenuItemsCompleted >= quizOrderMenuItems.length && numMenuItemsCompleted > 0) {
+    if (numMenuItemsCompleted >= quizOrderMenuItems.length && numMenuItemsCompleted > 0 && wrongIngredients.length === 0) {
       setModal("complete")
     }
-  }, [numMenuItemsCompleted])
+  }, [numMenuItemsCompleted, quizOrderMenuItems, wrongIngredients])
 
   // Wrong ingredients
   useEffect(() => {
@@ -57,6 +57,18 @@ const QuizContainer = () => {
       setModal("wrong")
     }
   }, [wrongIngredients])
+
+  const hideModal = () => {
+    if (modal === "wrong") {
+      if (numMenuItemsCompleted >= quizOrderMenuItems.length) {
+        setModal("complete")
+      } else {
+        setModal("hidden")
+      }
+    } else {
+      setModal("hidden")
+    }
+  }
 
   return (
     <>
@@ -101,7 +113,7 @@ const QuizContainer = () => {
         <div id="modal-content" className="bg-white p-4 rounded-md m-2 w-full md:w-1/2 flex flex-col space-y-2">
           <div id="modal-header" className="flex flex-row justify-between items-center">
             <div id="modal-title" className="text-xl font-bold">{titles[modal]}</div>
-            <button id="modal-close" onClick={() => setModal("hidden")}>X</button>
+            <button id="modal-close" onClick={hideModal}>X</button>
           </div>
           <hr />
           <div id="modal-body" className="text-sm">
@@ -109,7 +121,7 @@ const QuizContainer = () => {
           </div>
           <hr />
           <div id="modal-footer">
-            <button id="modal-close" onClick={() => setModal("hidden")} className="bg-gray-500 rounded-md p-2 text-sm text-white">Close</button>
+            <button id="modal-close" onClick={hideModal} className="bg-gray-500 rounded-md p-2 text-sm text-white">Close</button>
           </div>
         </div>
       </div>
