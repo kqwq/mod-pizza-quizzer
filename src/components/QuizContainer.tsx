@@ -8,29 +8,58 @@ const titles = {
   wrong: "Incorrect",
   complete: "Quiz Complete"
 }
-const paragraphs = {
-  hidden: () => [],
-  instructions: () => [
+const bodyHtml = {
+  hidden: () => "",
+  instructions: () => `
+  <p>Click on the toppings you think are on the menu item.</p>
+  <p>When you are done, click the large "Finish" box on the makeline.</p>
+  <p>You will get a point for each correct answer.</p>
+  <p>There is no time limit.</p>
+  <p>Click "Start Quiz" to begin.</p>`,
+  wrong: (stateContext: any) => {
+    const { wrongIngredients, numMenuItemsCompleted, quizOrderMenuItems } = stateContext
+    let menuItemName = menuItemFriendlyNameOf(quizOrderMenuItems[numMenuItemsCompleted - 1])
+    let correct = menuItemToppingsMinusExpo(quizOrderMenuItems[numMenuItemsCompleted - 1]).join(", ")
+    let yours = wrongIngredients.join(", ")
+    let html = `<p>Not quite! Let's compare</p>
+    <div class="flex flex-col [@media(min-width:400px)]:flex-row justify-between items-start mt-2">
+      <div class="space-y-2 flex-1">
+        <b>${menuItemName} toppings</b>
+        <ul class="list-disc list-inside">`;
 
-    "Click on the toppings you think are on the menu item.",
-    "When you are done, click the large \"Finish\" box on the makeline.",
-    "You will get a point for each correct answer.",
-    "There is no time limit.",
-    "Click \"Start Quiz\" to begin."
-  ],
-  wrong: (stateContext: any) => [
-    "Not quite!",
-    `The correct toppings for ${menuItemFriendlyNameOf(stateContext.quizOrderMenuItems[stateContext.numMenuItemsCompleted - 1])} are:`,
-    menuItemToppingsMinusExpo(stateContext.quizOrderMenuItems[stateContext.numMenuItemsCompleted - 1]).join(", ") + ".",
-    "---",
-    `You selected:`,
-    `${stateContext.wrongIngredients.join(", ")}.`
+    correct.split(", ").forEach((topping: string) => {
+      // If the topping is not present in the user's answer, color it purple
+      let bgColor = yours.includes(topping) ? "" : "bg-purple-200 rounded-md"
+      html += `<li class="${bgColor}">${topping}</li>`;
+    });
 
-  ],
-  complete: (stateContext: any) => [
-    `You got ${stateContext.score} out of ${stateContext.quizOrderMenuItems.length} correct!`,
-    "Click \"Start Quiz\" to try again."
-  ]
+    html += `</ul>
+      </div>
+      <div class="space-y-2 flex-1">
+        <b>Your toppings</b>
+        <ul class="list-disc list-inside">`;
+
+    yours.split(", ").forEach((topping: string) => {
+      // If the topping is not in the correct list, color it red
+      let bgColor = correct.includes(topping) ? "" : "bg-red-200 rounded-md"
+      html += `<li class="${bgColor}">${topping}</li>`;
+    });
+
+    html += `</ul>
+      </div>
+    </div>`;
+    return html
+
+
+
+  },
+
+
+
+  complete: (stateContext: any) =>
+    `<p>You got ${stateContext.score} out of ${stateContext.quizOrderMenuItems.length} correct!</p>
+    <p>Click "Start Quiz" to try again.</p>`
+
 }
 
 
@@ -116,9 +145,7 @@ const QuizContainer = () => {
             <button id="modal-close" onClick={hideModal}>X</button>
           </div>
           <hr />
-          <div id="modal-body" className="text-sm">
-            {paragraphs[modal](stateContext).map((paragraph, i) => <p key={i}>{paragraph}</p>)}
-          </div>
+          <div id="modal-body" className="text-sm" dangerouslySetInnerHTML={{ __html: bodyHtml[modal](stateContext) }}></div>
           <hr />
           <div id="modal-footer">
             <button id="modal-close" onClick={hideModal} className="bg-gray-500 rounded-md p-2 text-sm text-white">Close</button>
