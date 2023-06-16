@@ -10,6 +10,7 @@ interface StateContextType {
   correctMenuItems: string[];
   incorrectMenuItems: string[];
   wrongIngredients: Ingredient[];
+  menuItemSelected: string;
   score: number;
   total: number;
   started: boolean;
@@ -18,6 +19,7 @@ interface StateContextType {
   toggleIngredient: (ingredient: Ingredient) => void;
   clearIngredients: () => void;
   initMenuItemsQuiz: () => void;
+  setMenuItemSelected: (menuItem: string) => void;
   submitQuiz: () => void;
   stopQuiz: () => void;
 }
@@ -45,6 +47,7 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
   const [correctMenuItems, setCorrectMenuItems] = useState<string[]>([]);
   const [incorrectMenuItems, setIncorrectMenuItems] = useState<string[]>([]);
   const [wrongIngredients, setWrongIngredients] = useState<Ingredient[]>([]);
+  const [menuItemSelected, setMenuItemSelected] = useState<string>("none");
   const [score, setScore] = useState(0);
   const [total, setTotal] = useState(0);
   const [started, setStarted] = useState(false);
@@ -133,12 +136,14 @@ const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
     correctMenuItems,
     incorrectMenuItems,
     wrongIngredients,
+    menuItemSelected,
     score,
     total,
     started,
     toggleIngredient,
     clearIngredients,
     initMenuItemsQuiz,
+    setMenuItemSelected,
     submitQuiz,
     stopQuiz,
   };

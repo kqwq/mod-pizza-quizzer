@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { MAKELINE_BOX_HEIGHT, MAKELINE_BOX_WIDTH, MAKELINE_BOX_MARGIN } from '../util/contsants'
-import type { Ingredient } from '../util/makeline'
+import { Ingredient, menuItems, menuItemToppingsMinusExpo } from '../util/makeline'
 import { StateContext } from '../util/Provider'
 
 const CroppedImg = ({ src, alt, scale, extraStyle = "" }: { src: string, alt: string, scale: number, extraStyle?: string }) => {
@@ -20,7 +20,7 @@ const IngBox = ({ x, y, i, w = 1, h = 1, round = false }: { x: number, y: number
   const height = MAKELINE_BOX_HEIGHT * (h - marginRatio * 2)
   const xPos = MAKELINE_BOX_WIDTH * (x + marginRatio)
   const yPos = MAKELINE_BOX_HEIGHT * (y + marginRatio)
-  const { toggleIngredient, selectedIngredients, started } = useContext(StateContext);
+  const { toggleIngredient, selectedIngredients, started, menuItemSelected } = useContext(StateContext);
   const clickable = i !== "spacer" ? "cursor-pointer" : ""
   const idleColor = w <= 0.6 ? "bg-white" : "bg-gray-300"
   let scaleFactor = 1;
@@ -29,8 +29,11 @@ const IngBox = ({ x, y, i, w = 1, h = 1, round = false }: { x: number, y: number
   if (w === 1) scaleFactor = 1.4;
   if (w === 2) scaleFactor = 0.7;
   let colors;
+  const menuItemSelectedContainsThis = menuItemSelected in menuItems && menuItemToppingsMinusExpo(menuItemSelected).includes(i as any)
   if (i === "spacer") {
     colors = "bg-gray-300 "
+  } else if (menuItemSelectedContainsThis) { // If menu item hovered over
+    colors = "bg-purple-500 hover:bg-purple-600 z-10"
   } else {
     colors = selectedIngredients.includes(i as Ingredient) ? "bg-green-500 hover:bg-green-600 z-10" : `${idleColor} hover:bg-slate-400`;
   }

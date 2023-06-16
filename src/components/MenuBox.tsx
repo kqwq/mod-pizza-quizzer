@@ -7,7 +7,7 @@ const MenuBox = ({
 }: {
   menuItem: string
 }) => {
-  const { correctMenuItems, incorrectMenuItems } = useContext(StateContext)
+  const { correctMenuItems, incorrectMenuItems, setMenuItemSelected, menuItemSelected } = useContext(StateContext)
   const isCorrect = correctMenuItems.includes(menuItem)
   const isIncorrect = incorrectMenuItems.includes(menuItem)
   const ingredients = menuItemsList[menuItem as keyof typeof menuItemsList]
@@ -19,7 +19,14 @@ const MenuBox = ({
 
   return (
     <>
-      <div className={`relative h-36 w-36 md:w-auto flex justify-center items-center ${bgColor}`} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+      <div className={`cursor-pointer relative h-36 w-36 md:w-auto flex justify-center items-center ${bgColor}`} onClick={() => {
+        setMenuItemSelected(menuItemSelected === menuItem ? "none" : menuItem)
+      }} onMouseEnter={() => {
+        setIsHovered(true)
+      }} onMouseLeave={() => {
+
+        setIsHovered(false)
+      }}>
         {
           // A tooltip (black rounded box) with white text that has a bullet list of ingredients for the menu item that follows the mouse cursor
           isHovered && <div className="absolute bg-black rounded-md text-white p-2 max-h-full overflow-y-auto select-none">

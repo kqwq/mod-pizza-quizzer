@@ -1,9 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { menuItemNames } from '../util/makeline';
 import MenuBox from './MenuBox';
+import OutsideClickHandler from 'react-outside-click-handler';
+import { StateContext } from '../util/Provider';
+
 
 const MenuRef = () => {
+  const { setMenuItemSelected } = useContext(StateContext)
   const [show, setShow] = useState(true);
 
   return (
@@ -18,13 +22,16 @@ const MenuRef = () => {
 
       </div>
       <div id="grid-container" className="overflow-y-scroll h-full">
-        <div className="inline-grid grid-flow-col md:grid-flow-row md:grid-cols-3 gap-1 mx-4 min-h-0 bg-gray-400 border-gray-400 border-4">
-          {
-            menuItemNames.map((menuItem) => (
-              <MenuBox key={menuItem} menuItem={menuItem} />
-            ))
-          }
-        </div>
+        <OutsideClickHandler onOutsideClick={() => setMenuItemSelected("none")}>
+          <div className="inline-grid grid-flow-col md:grid-flow-row md:grid-cols-3 gap-1 mx-4 min-h-0 bg-gray-400 border-gray-400 border-4">
+
+            {
+              menuItemNames.map((menuItem) => (
+                <MenuBox key={menuItem} menuItem={menuItem} />
+              ))
+            }
+          </div>
+        </OutsideClickHandler>
       </div>
     </div>) : <div>
       <div className='absolute w-40 h-16 flex justify-center items-center'>
@@ -34,9 +41,9 @@ const MenuRef = () => {
         >Show menu</span>
       </div>
     </div>
+  )
 
 
-  );
 };
 
 export default MenuRef;
