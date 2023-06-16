@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
-import { MOD_PIZZA_RED } from '../util/contsants'
+import { MOD_PIZZA_DARK_RED, MOD_PIZZA_RED } from '../util/contsants'
 
 const Top = () => {
   function openInfoModal() {
@@ -11,7 +11,7 @@ const Top = () => {
 
 
   return (
-    <div className={`h-16 md:h-32 w-full flex items-center justify-between bg-orange-400`}>
+    <div className={`h-16 md:h-32 w-full flex items-center justify-between bg-slate-400`}>
 
       <h1 className="text-xl md:text-3xl ml-6 md:ml-12 font-light hover:underline hover:decoration-dotted hover:cursor-pointer">Mod Pizza Quizzer</h1>
       <div id="information" className="mr-6 md:mr-12 space-x-3 md:space-x-6">
